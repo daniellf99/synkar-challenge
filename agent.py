@@ -75,8 +75,6 @@ async def publish_measurements():
 
 
 async def main():
-    await asyncio.sleep(20)
-
     calibration_task = asyncio.create_task(calibrate())
     measurements_task = asyncio.create_task(publish_measurements())
 
