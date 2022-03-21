@@ -1,0 +1,7 @@
+boto3
+fastapi
+hbmqtt
+pydantic
+botocore
+websockets==8
+uvicorn

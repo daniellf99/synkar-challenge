@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+  api:
+    build: .
+    command: api.py
+    ports:
+      - "8080:8080"
+    links:
+      - mqtt
+
+  register-measurement:
+    build: .
+    command: register_measurement.py
+    links:
+      - mqtt
+
+  agent:
+    build: .
+    command: agent.py
+    links:
+      - mqtt
+
+  mqtt:
+    image: eclipse-mosquitto
+    volumes:
+      - type: bind
+        source: ./config/
+        target: /mosquitto/config/
