@@ -60,11 +60,11 @@ async def calibrate():
 
 async def publish_measurements():
     """Publishes the latest temperature measurement every 10 seconds. Runs forever."""
+    client = MQTTClient()
+
+    await client.connect(config.BROKER_URL)
+
     while True:
-        client = MQTTClient()
-
-        await client.connect(config.BROKER_URL)
-
         measurement = correct(get_measurement(), coefficients)
 
         payload = measurement.json().encode()
