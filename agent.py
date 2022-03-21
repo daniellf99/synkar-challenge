@@ -67,7 +67,7 @@ async def publish_measurements():
 
         measurement = correct(get_measurement(), coefficients)
 
-        payload = json.dumps(measurement).encode()
+        payload = measurement.json().encode()
 
         await client.publish(config.MEASUREMENTS_TOPIC, payload, qos=QOS_0)
 
