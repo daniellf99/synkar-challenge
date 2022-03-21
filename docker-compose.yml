@@ -7,18 +7,24 @@ services:
       - "8080:8080"
     links:
       - mqtt
+    volumes:
+      - "~/.aws:/root/.aws"
 
   register-measurement:
     build: .
     command: register_measurement.py
     links:
       - mqtt
+    volumes:
+      - "~/.aws:/root/.aws"
 
   agent:
     build: .
     command: agent.py
     links:
       - mqtt
+    volumes:
+      - "~/.aws:/root/.aws"
 
   mqtt:
     image: eclipse-mosquitto
