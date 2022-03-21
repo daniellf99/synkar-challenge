@@ -69,7 +69,7 @@ async def publish_measurements():
 
         payload = measurement.json().encode()
 
-        await client.publish(config.MEASUREMENTS_TOPIC, payload, qos=QOS_0)
+        await client.publish(config.MEASUREMENTS_TOPIC, payload, qos=QOS_1)
 
         await asyncio.sleep(10)
 
